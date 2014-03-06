@@ -1,7 +1,7 @@
 //                              -*- Mode: C++ -*- 
 // OrientedGraph.h
-// Copyright © 2001-06 Laboratoire de Biologie Informatique et Théorique.
-//                     Université de Montréal.
+// Copyright ï¿½ 2001-06 Laboratoire de Biologie Informatique et Thï¿½orique.
+//                     Universitï¿½ de Montrï¿½al.
 // Author           : Patrick Gendron
 // Created On       : Thu May 10 14:49:18 2001
 // $Revision: 1.10 $
@@ -454,7 +454,7 @@ namespace mccore
 		  Path< V, EW > &tmp = lst.back ();
 
 		  tmp.push_back (*neighborsIt);
-		  tmp.setValue (tmp.getValue () + getEdgeWeight (endNode, *neighborsIt));
+		  tmp.setValue (tmp.getValue () + this->getEdgeWeight (endNode, *neighborsIt));
 		}
 	    }
 	  lst.pop_front ();
@@ -474,11 +474,11 @@ namespace mccore
       typename Path< V, EW >::reverse_iterator lit;
       
       fit = p.rbegin ();
-      insert (*fit);
+      this->insert (*fit);
       for (lit = fit++; p.rend () != fit; ++fit, ++lit)
 	{
-	  insert (*fit);
-	  if (! areConnected (*lit, *fit))
+	  this->insert (*fit);
+	  if (! this->areConnected (*lit, *fit))
 	    {
 	      super::connect (*lit, *fit, true, val);
 	    }

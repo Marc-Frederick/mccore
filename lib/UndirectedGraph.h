@@ -470,9 +470,9 @@ namespace mccore
 	    }
 	  else
 	    {
-	      if (internalAreConnected (source, w))
+	      if (this->internalAreConnected (source, w))
 		{
-		  value = internalGetEdgeWeight (source, w);
+		  value = this->internalGetEdgeWeight (source, w);
 		  paths[w].push_back (w);
 		}
 	      else
@@ -518,8 +518,8 @@ namespace mccore
 	      
 	      v = *k;
 	      if (comparator (source, w)
-		  && internalAreConnected (w, v)
-		  && (paths[v].getValue () > (new_val = min_value + internalGetEdgeWeight (w, v))))
+		  && this->internalAreConnected (w, v)
+		  && (paths[v].getValue () > (new_val = min_value + this->internalGetEdgeWeight (w, v))))
 	        {
 		  paths[v] = paths[w];
 		  paths[v].push_back (v);
@@ -572,10 +572,10 @@ namespace mccore
 	  //       cout << "Treating " << *p << endl;
 	  
 	  s = p->begin ();
-	  row[internalGetEdgeLabel (p->back (), *s)] = true;
+	  row[this->internalGetEdgeLabel (p->back (), *s)] = true;
 	  for (r = s++; p->end () != s; ++r, ++s)
 	    {
-	      row[internalGetEdgeLabel (*r, *s)] = true;
+	      row[this->internalGetEdgeLabel (*r, *s)] = true;
 	    }
 	  
 	  inserted = false;
@@ -646,10 +646,10 @@ namespace mccore
 		      row2[k] = false;
 		    }		  
 		  s = marked[i]->begin ();
-		  row2[internalGetEdgeLabel (marked[i]->back (), *s)] = true;
+		  row2[this->internalGetEdgeLabel (marked[i]->back (), *s)] = true;
 		  for (r = s++; marked[i]->end () != s; ++r, ++s)
 		    {
-		      row2[internalGetEdgeLabel (*r, *s)] = true;
+		      row2[this->internalGetEdgeLabel (*r, *s)] = true;
 // 		      row2[internalGetEdge (*r, *s)] = true;
 		    }		  
 		  inserted = false;	
@@ -768,7 +768,7 @@ namespace mccore
 		      
 		      C.insert (C.end (), Pvy.rbegin (), Pvy.rend ());
 		      C.pop_back ();
-		      C.setValue (Pvx.getValue () + Pvy.getValue () + internalGetEdgeWeight (ecIt->second));
+		      C.setValue (Pvx.getValue () + Pvy.getValue () + this->internalGetEdgeWeight (ecIt->second));
 		      cycles.push_back (C);
 		    }
 		}
@@ -871,10 +871,10 @@ namespace mccore
 	    }
 	  
 	  s = p->begin ();
-	  candidate[internalGetEdgeLabel (p->back (), *s)] = true;
+	  candidate[this->internalGetEdgeLabel (p->back (), *s)] = true;
 	  for (r = s++; p->end () != s; ++r, ++s)
 	    {
-	      candidate[internalGetEdgeLabel (*r, *s)] = true;
+	      candidate[this->internalGetEdgeLabel (*r, *s)] = true;
 	    }
 	  candidate2 = candidate;
 
